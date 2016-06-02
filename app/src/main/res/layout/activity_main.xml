@@ -9,8 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wargames.tipcalc.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+   <include
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/tipContent"
+       layout="@layout/content_tip"/>
+
 </RelativeLayout>
