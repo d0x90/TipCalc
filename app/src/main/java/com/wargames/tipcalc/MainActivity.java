@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
     private void hideKeyboard() {
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
-        try{
+        try
+        {
             inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }catch(NullPointerException e)
