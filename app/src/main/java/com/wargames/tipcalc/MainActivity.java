@@ -67,8 +67,10 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btnSubmit)
     public void handleClickSubmit()
     {
-        //Log.e(getLocalClassName(),"Se hizo click en submit");
+
         hideKeyboard();
+
+        //Log.e(getLocalClassName(),"Se hizo click en submit");
         String strInputTotal = inputBill.getText().toString().trim();
         if (!strInputTotal.isEmpty())
         {
