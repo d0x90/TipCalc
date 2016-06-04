@@ -1,4 +1,4 @@
-package com.wargames.tipcalc;
+package com.wargames.tipcalc.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.wargames.tipcalc.R;
+import com.wargames.tipcalc.TipCalcApp;
+import com.wargames.tipcalc.fragments.TipHistoryListFragment;
+import com.wargames.tipcalc.fragments.TipHistoryListFragmentListener;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.txtTip)
     TextView txtTip;
 
+
+    private TipHistoryListFragmentListener fragmentListener;
     //definir constantes
     private final static int TIP_STEP_CHANGE = 1;
     private final static int DEFAULT_TIP_PERCENTAGE = 10;
@@ -46,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        // instanciar el fragmento ?
+        // como ya viene dentro del layout no se tiene que instanciar, se tiene que obtener
+        TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager()
+                                            .findFragmentById(R.id.fragmentList);
+        fragmentListener= (TipHistoryListFragmentListener) fragment;
     }
 
     @Override
