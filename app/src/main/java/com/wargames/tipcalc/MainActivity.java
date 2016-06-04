@@ -84,9 +84,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @OnClick(R.id.btnIncrease)
+    public void handleClickIncrease()
+    {
+        hideKeyboard();
+        handleTipChange(TIP_STEP_CHANGE);
+    }
+
+    @OnClick(R.id.btnDecrease)
+    public void handleClickDecrease()
+    {
+        hideKeyboard();
+        handleTipChange(-TIP_STEP_CHANGE);
+    }
+
+    private void handleTipChange(int tipStepChange) {
+        //Obtener el porcentaje de propina actual
+        int tipPercentage = getTipPercentage();
+        tipPercentage += tipStepChange;
+        if ( tipPercentage > 0)
+        {
+            inputPercentage.setText(String.valueOf(tipPercentage));
+        }
+    }
+
     public int getTipPercentage()
     {
-        return 10;
+        int tipPercentage = DEFAULT_TIP_PERCENTAGE;
+        String strInputTipPercentage = inputPercentage.getText().toString().trim();
+        if ( !strInputTipPercentage.isEmpty())
+        {
+            tipPercentage = Integer.parseInt(strInputTipPercentage);
+        }else
+        {
+            inputPercentage.setText(String.valueOf(tipPercentage));
+        }
+        return tipPercentage;
     }
 
 
