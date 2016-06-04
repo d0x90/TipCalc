@@ -58,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
         // como ya viene dentro del layout no se tiene que instanciar, se tiene que obtener
         TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager()
                                             .findFragmentById(R.id.fragmentList);
+        /*
+         El fragmento puede retenera la instancia para que no se este recreando cuando hay un cambio de configuracion
+         Eventualmente, ésto va a tener una mayor utilidad cuando tengamos un contenido en el fragmento,
+         que es recreado en el "uncreate". Entonces, lo que vamos a ponerle es que guarde la instancia.
+         Y entonces, va a permitir que los valores asociados no sean reiniciados cuando
+        se cambia la configuración, se rota la pantalla, se muestra el teclado, etcétera.
+         */
+        fragment.setRetainInstance(true);
+
+
         fragmentListener= (TipHistoryListFragmentListener) fragment;
     }
 
@@ -90,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
             int tipPercentage = getTipPercentage();
             double tip = total *(tipPercentage/100d);
             String strTip = String.format(getString(R.string.global_message_tip),tip);
+
+            // le enviamos el total al fragmento
+            fragmentListener.action(strTip);
+
+
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
