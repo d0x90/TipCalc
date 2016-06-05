@@ -10,6 +10,6 @@
         android:layout_gravity="center"
         android:padding="@dimen/activity_horizontal_margin"
         android:text="Large Text"
-        android:id="@+id/textView"
+        android:id="@+id/txtContent"
          />
 </LinearLayout>
